@@ -1,0 +1,391 @@
+pyuic5 -x sudokugui.ui -o designergui.py
+
+pyinstaller designergui.py
+
+	from solve2 import *
+	from solve3 import *
+
+        self.button_solve2.clicked.connect(
+            lambda: self.stackedWidget.setCurrentWidget(self.page_2))
+        self.button_solve3.clicked.connect(
+            lambda: self.stackedWidget.setCurrentWidget(self.page_4))
+	self.button_back_main_menu.clicked.connect(
+            lambda: self.stackedWidget.setCurrentWidget(self.page_1))
+	self.button_back_main_menu_3.clicked.connect(
+            lambda: self.stackedWidget.setCurrentWidget(self.page_1))
+        self.button_solve2_solve.clicked.connect(
+            lambda: self.stackedWidget.setCurrentWidget(self.page_3))
+        self.button_solve2_solve.clicked.connect(
+            lambda: self.stackedWidget.setCurrentWidget(self.retranslateUi(MainWindow)))
+        self.button_solve3_solve.clicked.connect(
+            lambda: self.stackedWidget.setCurrentWidget(self.page_5))
+        self.button_solve3_solve.clicked.connect(
+            lambda: self.stackedWidget.setCurrentWidget(self.retranslateUi(MainWindow)))
+        self.button_back_solve2.clicked.connect(
+            lambda: self.stackedWidget.setCurrentWidget(self.page_2))
+        self.button_back_solve3.clicked.connect(
+            lambda: self.stackedWidget.setCurrentWidget(self.page_4))
+        self.button_solve2_reset.clicked.connect(
+            lambda: self.stackedWidget.setCurrentWidget(self.reset2()))
+        self.button_solve2_reset.clicked.connect(
+            lambda: self.stackedWidget.setCurrentWidget(self.retranslateUi(MainWindow)))
+        self.button_solve3_reset.clicked.connect(
+            lambda: self.stackedWidget.setCurrentWidget(self.reset3()))
+        self.button_solve3_reset.clicked.connect(
+            lambda: self.stackedWidget.setCurrentWidget(self.retranslateUi(MainWindow)))
+
+        self.board2 = [
+            [self.spinBox.value(), self.spinBox_2.value(), self.spinBox_3.value(
+            ), self.spinBox_4.value(), self.spinBox_5.value(), self.spinBox_6.value()],
+            [self.spinBox_7.value(), self.spinBox_8.value(), self.spinBox_9.value(
+            ), self.spinBox_10.value(), self.spinBox_11.value(), self.spinBox_12.value()],
+            [self.spinBox_13.value(), self.spinBox_14.value(), self.spinBox_15.value(
+            ), self.spinBox_16.value(), self.spinBox_17.value(), self.spinBox_18.value()],
+            [self.spinBox_19.value(), self.spinBox_20.value(), self.spinBox_21.value(
+            ), self.spinBox_22.value(), self.spinBox_23.value(), self.spinBox_24.value()],
+            [self.spinBox_25.value(), self.spinBox_26.value(), self.spinBox_27.value(
+            ), self.spinBox_28.value(), self.spinBox_29.value(), self.spinBox_30.value()],
+            [self.spinBox_31.value(), self.spinBox_32.value(), self.spinBox_33.value(
+            ), self.spinBox_34.value(), self.spinBox_35.value(), self.spinBox_36.value()]
+        ]
+
+	self.board3 = [
+            [self.spinBox_37.value(), self.spinBox_38.value(), self.spinBox_39.value()
+                , self.spinBox_40.value(), self.spinBox_41.value(), self.spinBox_42.value(),
+            self.spinBox_43.value(), self.spinBox_44.value(), self.spinBox_45.value()
+                ], [self.spinBox_46.value(), self.spinBox_47.value(), self.spinBox_48.value(),
+            self.spinBox_49.value(), self.spinBox_50.value(), self.spinBox_51.value()
+                , self.spinBox_52.value(), self.spinBox_53.value(), self.spinBox_54.value()],
+            [self.spinBox_55.value(), self.spinBox_56.value(), self.spinBox_57.value()
+                , self.spinBox_58.value(), self.spinBox_59.value(), self.spinBox_60.value(),
+            self.spinBox_61.value(), self.spinBox_62.value(), self.spinBox_63.value()
+                ], [self.spinBox_64.value(), self.spinBox_65.value(), self.spinBox_66.value(),
+            self.spinBox_67.value(), self.spinBox_68.value(), self.spinBox_69.value()
+                , self.spinBox_70.value(), self.spinBox_71.value(), self.spinBox_72.value()],
+	    [self.spinBox_73.value(), self.spinBox_74.value(), self.spinBox_75.value()
+                , self.spinBox_76.value(), self.spinBox_77.value(), self.spinBox_78.value(),
+            self.spinBox_79.value(), self.spinBox_80.value(), self.spinBox_81.value()
+                ], [self.spinBox_82.value(), self.spinBox_83.value(), self.spinBox_84.value(),
+            self.spinBox_85.value(), self.spinBox_86.value(), self.spinBox_87.value()
+                , self.spinBox_88.value(), self.spinBox_89.value(), self.spinBox_90.value()],
+            [self.spinBox_91.value(), self.spinBox_92.value(), self.spinBox_93.value()
+                , self.spinBox_94.value(), self.spinBox_95.value(), self.spinBox_96.value(),
+            self.spinBox_97.value(), self.spinBox_98.value(), self.spinBox_99.value()
+                ], [self.spinBox_100.value(), self.spinBox_101.value(), self.spinBox_102.value(),
+            self.spinBox_103.value(), self.spinBox_104.value(), self.spinBox_105.value()
+                , self.spinBox_106.value(), self.spinBox_107.value(), self.spinBox_108.value()],
+            [self.spinBox_109.value(), self.spinBox_110.value(), self.spinBox_111.value()
+                , self.spinBox_112.value(), self.spinBox_113.value(), self.spinBox_114.value(),
+            self.spinBox_115.value(), self.spinBox_116.value(), self.spinBox_117.value()
+                ]
+        ]
+
+
+	solve2(self.board2)
+
+        self.label_solve.setText(_translate(
+        	"MainWindow", "SOLVED"))
+
+        for i, row in enumerate(self.board2):
+            for j, val in enumerate(row):
+                if val == 0:
+                    self.label_solve.setText(_translate(
+                        "MainWindow", "NOT SOLVABLE"))
+
+	
+	solve3(self.board3)
+
+        self.label_solve_3.setText(_translate(
+        	"MainWindow", "SOLVED"))
+
+        for i, row in enumerate(self.board3):
+            for j, val in enumerate(row):
+                if val == 0:
+                    self.label_solve_3.setText(_translate(
+                        "MainWindow", "NOT SOLVABLE"))
+
+
+        self.label.setText(_translate(
+            "MainWindow", str(self.board2[0][0])))
+        self.label_2.setText(_translate(
+            "MainWindow", str(self.board2[0][1])))
+        self.label_3.setText(_translate(
+            "MainWindow", str(self.board2[0][2])))
+        self.label_4.setText(_translate(
+            "MainWindow", str(self.board2[0][3])))
+        self.label_5.setText(_translate(
+            "MainWindow", str(self.board2[0][4])))
+        self.label_6.setText(_translate(
+            "MainWindow", str(self.board2[0][5])))
+        self.label_7.setText(_translate(
+            "MainWindow", str(self.board2[1][0])))
+        self.label_8.setText(_translate(
+            "MainWindow", str(self.board2[1][1])))
+        self.label_9.setText(_translate(
+            "MainWindow", str(self.board2[1][2])))
+        self.label_10.setText(_translate(
+            "MainWindow", str(self.board2[1][3])))
+        self.label_11.setText(_translate(
+            "MainWindow", str(self.board2[1][4])))
+        self.label_12.setText(_translate(
+            "MainWindow", str(self.board2[1][5])))
+        self.label_13.setText(_translate(
+            "MainWindow", str(self.board2[2][0])))
+        self.label_14.setText(_translate(
+            "MainWindow", str(self.board2[2][1])))
+        self.label_15.setText(_translate(
+            "MainWindow", str(self.board2[2][2])))
+        self.label_16.setText(_translate(
+            "MainWindow", str(self.board2[2][3])))
+        self.label_17.setText(_translate(
+            "MainWindow", str(self.board2[2][4])))
+        self.label_18.setText(_translate(
+            "MainWindow", str(self.board2[2][5])))
+        self.label_19.setText(_translate(
+            "MainWindow", str(self.board2[3][0])))
+        self.label_20.setText(_translate(
+            "MainWindow", str(self.board2[3][1])))
+        self.label_21.setText(_translate(
+            "MainWindow", str(self.board2[3][2])))
+        self.label_22.setText(_translate(
+            "MainWindow", str(self.board2[3][3])))
+        self.label_23.setText(_translate(
+            "MainWindow", str(self.board2[3][4])))
+        self.label_24.setText(_translate(
+            "MainWindow", str(self.board2[3][5])))
+        self.label_25.setText(_translate(
+            "MainWindow", str(self.board2[4][0])))
+        self.label_26.setText(_translate(
+            "MainWindow", str(self.board2[4][1])))
+        self.label_27.setText(_translate(
+            "MainWindow", str(self.board2[4][2])))
+        self.label_28.setText(_translate(
+            "MainWindow", str(self.board2[4][3])))
+        self.label_29.setText(_translate(
+            "MainWindow", str(self.board2[4][4])))
+        self.label_30.setText(_translate(
+            "MainWindow", str(self.board2[4][5])))
+        self.label_31.setText(_translate(
+            "MainWindow", str(self.board2[5][0])))
+        self.label_32.setText(_translate(
+            "MainWindow", str(self.board2[5][1])))
+        self.label_33.setText(_translate(
+            "MainWindow", str(self.board2[5][2])))
+        self.label_34.setText(_translate(
+            "MainWindow", str(self.board2[5][3])))
+        self.label_35.setText(_translate(
+            "MainWindow", str(self.board2[5][4])))
+        self.label_36.setText(_translate(
+            "MainWindow", str(self.board2[5][5])))
+        self.label_37.setText(_translate(
+            "MainWindow", str(self.board3[0][0])))
+        self.label_38.setText(_translate(
+            "MainWindow", str(self.board3[0][1])))
+        self.label_39.setText(_translate(
+            "MainWindow", str(self.board3[0][2])))
+        self.label_40.setText(_translate(
+            "MainWindow", str(self.board3[0][3])))
+        self.label_41.setText(_translate(
+            "MainWindow", str(self.board3[0][4])))
+        self.label_42.setText(_translate(
+            "MainWindow", str(self.board3[0][5])))
+        self.label_43.setText(_translate(
+            "MainWindow", str(self.board3[0][6])))
+        self.label_44.setText(_translate(
+            "MainWindow", str(self.board3[0][7])))
+        self.label_45.setText(_translate(
+            "MainWindow", str(self.board3[0][8])))
+        self.label_46.setText(_translate(
+            "MainWindow", str(self.board3[1][0])))
+        self.label_47.setText(_translate(
+            "MainWindow", str(self.board3[1][1])))
+        self.label_48.setText(_translate(
+            "MainWindow", str(self.board3[1][2])))
+        self.label_49.setText(_translate(
+            "MainWindow", str(self.board3[1][3])))
+        self.label_50.setText(_translate(
+            "MainWindow", str(self.board3[1][4])))
+        self.label_51.setText(_translate(
+            "MainWindow", str(self.board3[1][5])))
+        self.label_52.setText(_translate(
+            "MainWindow", str(self.board3[1][6])))
+        self.label_53.setText(_translate(
+            "MainWindow", str(self.board3[1][7])))
+        self.label_54.setText(_translate(
+            "MainWindow", str(self.board3[1][8])))
+        self.label_55.setText(_translate(
+            "MainWindow", str(self.board3[2][0])))
+        self.label_56.setText(_translate(
+            "MainWindow", str(self.board3[2][1])))
+        self.label_57.setText(_translate(
+            "MainWindow", str(self.board3[2][2])))
+        self.label_58.setText(_translate(
+            "MainWindow", str(self.board3[2][3])))
+        self.label_59.setText(_translate(
+            "MainWindow", str(self.board3[2][4])))
+        self.label_60.setText(_translate(
+            "MainWindow", str(self.board3[2][5])))
+        self.label_61.setText(_translate(
+            "MainWindow", str(self.board3[2][6])))
+        self.label_62.setText(_translate(
+            "MainWindow", str(self.board3[2][7])))
+        self.label_63.setText(_translate(
+            "MainWindow", str(self.board3[2][8])))
+        self.label_64.setText(_translate(
+            "MainWindow", str(self.board3[3][0])))
+        self.label_65.setText(_translate(
+            "MainWindow", str(self.board3[3][1])))
+        self.label_66.setText(_translate(
+            "MainWindow", str(self.board3[3][2])))
+        self.label_67.setText(_translate(
+            "MainWindow", str(self.board3[3][3])))
+        self.label_68.setText(_translate(
+            "MainWindow", str(self.board3[3][4])))
+        self.label_69.setText(_translate(
+            "MainWindow", str(self.board3[3][5])))
+        self.label_70.setText(_translate(
+            "MainWindow", str(self.board3[3][6])))
+        self.label_71.setText(_translate(
+            "MainWindow", str(self.board3[3][7])))
+        self.label_72.setText(_translate(
+            "MainWindow", str(self.board3[3][8])))
+        self.label_73.setText(_translate(
+            "MainWindow", str(self.board3[4][0])))
+        self.label_74.setText(_translate(
+            "MainWindow", str(self.board3[4][1])))
+        self.label_75.setText(_translate(
+            "MainWindow", str(self.board3[4][2])))
+        self.label_76.setText(_translate(
+            "MainWindow", str(self.board3[4][3])))
+        self.label_77.setText(_translate(
+            "MainWindow", str(self.board3[4][4])))
+        self.label_78.setText(_translate(
+            "MainWindow", str(self.board3[4][5])))
+        self.label_79.setText(_translate(
+            "MainWindow", str(self.board3[4][6])))
+        self.label_80.setText(_translate(
+            "MainWindow", str(self.board3[4][7])))
+        self.label_81.setText(_translate(
+            "MainWindow", str(self.board3[4][8])))
+        self.label_82.setText(_translate(
+            "MainWindow", str(self.board3[5][0])))
+        self.label_83.setText(_translate(
+            "MainWindow", str(self.board3[5][1])))
+        self.label_84.setText(_translate(
+            "MainWindow", str(self.board3[5][2])))
+        self.label_85.setText(_translate(
+            "MainWindow", str(self.board3[5][3])))
+        self.label_86.setText(_translate(
+            "MainWindow", str(self.board3[5][4])))
+        self.label_87.setText(_translate(
+            "MainWindow", str(self.board3[5][5])))
+        self.label_88.setText(_translate(
+            "MainWindow", str(self.board3[5][6])))
+        self.label_89.setText(_translate(
+            "MainWindow", str(self.board3[5][7])))
+        self.label_90.setText(_translate(
+            "MainWindow", str(self.board3[5][8])))
+        self.label_91.setText(_translate(
+            "MainWindow", str(self.board3[6][0])))
+        self.label_92.setText(_translate(
+            "MainWindow", str(self.board3[6][1])))
+        self.label_93.setText(_translate(
+            "MainWindow", str(self.board3[6][2])))
+        self.label_94.setText(_translate(
+            "MainWindow", str(self.board3[6][3])))
+        self.label_95.setText(_translate(
+            "MainWindow", str(self.board3[6][4])))
+        self.label_96.setText(_translate(
+            "MainWindow", str(self.board3[6][5])))
+        self.label_97.setText(_translate(
+            "MainWindow", str(self.board3[6][6])))
+        self.label_98.setText(_translate(
+            "MainWindow", str(self.board3[6][7])))
+        self.label_99.setText(_translate(
+            "MainWindow", str(self.board3[6][8])))
+        self.label_100.setText(_translate(
+            "MainWindow", str(self.board3[7][0])))
+        self.label_101.setText(_translate(
+            "MainWindow", str(self.board3[7][1])))
+        self.label_102.setText(_translate(
+            "MainWindow", str(self.board3[7][2])))
+        self.label_103.setText(_translate(
+            "MainWindow", str(self.board3[7][3])))
+        self.label_104.setText(_translate(
+            "MainWindow", str(self.board3[7][4])))
+        self.label_105.setText(_translate(
+            "MainWindow", str(self.board3[7][5])))
+        self.label_106.setText(_translate(
+            "MainWindow", str(self.board3[7][6])))
+        self.label_107.setText(_translate(
+            "MainWindow", str(self.board3[7][7])))
+        self.label_108.setText(_translate(
+            "MainWindow", str(self.board3[7][8])))
+        self.label_109.setText(_translate(
+            "MainWindow", str(self.board3[8][0])))
+        self.label_110.setText(_translate(
+            "MainWindow", str(self.board3[8][1])))
+        self.label_111.setText(_translate(
+            "MainWindow", str(self.board3[8][2])))
+        self.label_112.setText(_translate(
+            "MainWindow", str(self.board3[8][3])))
+        self.label_113.setText(_translate(
+            "MainWindow", str(self.board3[8][4])))
+        self.label_114.setText(_translate(
+            "MainWindow", str(self.board3[8][5])))
+        self.label_115.setText(_translate(
+            "MainWindow", str(self.board3[8][6])))
+        self.label_116.setText(_translate(
+            "MainWindow", str(self.board3[8][7])))
+        self.label_117.setText(_translate(
+            "MainWindow", str(self.board3[8][8])))
+
+
+
+    def reset2(self):
+        self.board2 = [
+            [self.spinBox.setValue(0), self.spinBox_2.setValue(0), self.spinBox_3.setValue(
+                0), self.spinBox_4.setValue(0), self.spinBox_5.setValue(0), self.spinBox_6.setValue(0)],
+            [self.spinBox_7.setValue(0), self.spinBox_8.setValue(0), self.spinBox_9.setValue(
+                0), self.spinBox_10.setValue(0), self.spinBox_11.setValue(0), self.spinBox_12.setValue(0)],
+            [self.spinBox_13.setValue(0), self.spinBox_14.setValue(0), self.spinBox_15.setValue(
+                0), self.spinBox_16.setValue(0), self.spinBox_17.setValue(0), self.spinBox_18.setValue(0)],
+            [self.spinBox_19.setValue(0), self.spinBox_20.setValue(0), self.spinBox_21.setValue(
+                0), self.spinBox_22.setValue(0), self.spinBox_23.setValue(0), self.spinBox_24.setValue(0)],
+            [self.spinBox_25.setValue(0), self.spinBox_26.setValue(0), self.spinBox_27.setValue(
+                0), self.spinBox_28.setValue(0), self.spinBox_29.setValue(0), self.spinBox_30.setValue(0)],
+            [self.spinBox_31.setValue(0), self.spinBox_32.setValue(0), self.spinBox_33.setValue(
+                0), self.spinBox_34.setValue(0), self.spinBox_35.setValue(0), self.spinBox_36.setValue(0)]
+        ]
+
+    def reset3(self):
+	self.board3 = [
+            [self.spinBox_37.setValue(0), self.spinBox_38.setValue(0), self.spinBox_39.setValue(
+                0), self.spinBox_40.setValue(0), self.spinBox_41.setValue(0), self.spinBox_42.setValue(0),
+            self.spinBox_43.setValue(0), self.spinBox_44.setValue(0), self.spinBox_45.setValue(
+                0)], [self.spinBox_46.setValue(0), self.spinBox_47.setValue(0), self.spinBox_48.setValue(0),
+            self.spinBox_49.setValue(0), self.spinBox_50.setValue(0), self.spinBox_51.setValue(
+                0), self.spinBox_52.setValue(0), self.spinBox_53.setValue(0), self.spinBox_54.setValue(0)],
+            [self.spinBox_55.setValue(0), self.spinBox_56.setValue(0), self.spinBox_57.setValue(
+                0), self.spinBox_58.setValue(0), self.spinBox_59.setValue(0), self.spinBox_60.setValue(0),
+            self.spinBox_61.setValue(0), self.spinBox_62.setValue(0), self.spinBox_63.setValue(
+                0)], [self.spinBox_64.setValue(0), self.spinBox_65.setValue(0), self.spinBox_66.setValue(0),
+            self.spinBox_67.setValue(0), self.spinBox_68.setValue(0), self.spinBox_69.setValue(
+                0), self.spinBox_70.setValue(0), self.spinBox_71.setValue(0), self.spinBox_72.setValue(0)],
+	    [self.spinBox_73.setValue(0), self.spinBox_74.setValue(0), self.spinBox_75.setValue(
+                0), self.spinBox_76.setValue(0), self.spinBox_77.setValue(0), self.spinBox_78.setValue(0),
+            self.spinBox_79.setValue(0), self.spinBox_80.setValue(0), self.spinBox_81.setValue(
+                0)], [self.spinBox_82.setValue(0), self.spinBox_83.setValue(0), self.spinBox_84.setValue(0),
+            self.spinBox_85.setValue(0), self.spinBox_86.setValue(0), self.spinBox_87.setValue(
+                0), self.spinBox_88.setValue(0), self.spinBox_89.setValue(0), self.spinBox_90.setValue(0)],
+            [self.spinBox_91.setValue(0), self.spinBox_92.setValue(0), self.spinBox_93.setValue(
+                0), self.spinBox_94.setValue(0), self.spinBox_95.setValue(0), self.spinBox_96.setValue(0),
+            self.spinBox_97.setValue(0), self.spinBox_98.setValue(0), self.spinBox_99.setValue(
+                0)], [self.spinBox_100.setValue(0), self.spinBox_101.setValue(0), self.spinBox_102.setValue(0),
+            self.spinBox_103.setValue(0), self.spinBox_104.setValue(0), self.spinBox_105.setValue(
+                0), self.spinBox_106.setValue(0), self.spinBox_107.setValue(0), self.spinBox_108.setValue(0)],
+            [self.spinBox_109.setValue(0), self.spinBox_110.setValue(0), self.spinBox_111.setValue(
+                0), self.spinBox_112.setValue(0), self.spinBox_113.setValue(0), self.spinBox_114.setValue(0),
+            self.spinBox_115.setValue(0), self.spinBox_116.setValue(0), self.spinBox_117.setValue(
+                0)]
+        ]
